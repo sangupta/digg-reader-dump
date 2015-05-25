@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sangupta</groupId>
+	<artifactId>digg-reader-dump</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Digg Reader Dump</name>
+	<description>Command line tool to dump data from Digg Reader as it has no API</description>
+	<inceptionYear>2015</inceptionYear>
+	<url>http://maven.apache.org</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	
+	<scm>
+		<connection>scm:git:git://github.com/sangupta/digg-reader-dump.git</connection>
+		<developerConnection>scm:git:http://git@github.com/sangupta/digg-reader-dump.git</developerConnection>
+		<url>https://github.com/sangupta/clitools</url>
+	</scm>
+	
+	<developers>
+		<developer>
+			<id>sangupta</id>
+			<name>Sandeep Gupta</name>
+			<email>sandy.pec@gmail.com</email>
+			<url>http://sangupta.com</url>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <build.number/>
+	</properties>
+	
+	<prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Prevent logging -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-nop</artifactId>
+		    <version>1.7.7</version>
+		</dependency>
+		
+		<!-- For discovering commands -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.9</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.airlift</groupId>
+			<artifactId>airline</artifactId>
+			<version>0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sangupta</groupId>
+			<artifactId>jerry-core</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sangupta</groupId>
+			<artifactId>jerry-http</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.4</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<!-- Compiler version to JDK 6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
