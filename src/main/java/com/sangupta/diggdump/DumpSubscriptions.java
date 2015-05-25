@@ -10,8 +10,10 @@ import com.sangupta.jerry.http.WebRequest;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.util.GsonUtils;
 
-@Command(name = "saved", description = "Dump saved articles")
+@Command(name = "subs", description = "Dump user subscriptions")
 public class DumpSubscriptions extends DiggDumpCommand {
+	
+	
 
 	@Override
 	public void run() {
