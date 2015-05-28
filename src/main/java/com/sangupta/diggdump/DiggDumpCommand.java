@@ -27,6 +27,11 @@ public abstract class DiggDumpCommand implements Runnable {
 	
 	@Override
 	public final void run() {
+		if(AssertUtils.isEmpty(this.authKey)) {
+			System.out.println("Cookie value must be provided over command line for this to work.");
+			return;
+		}
+		
 		extractUser();
 		
 		execute();
