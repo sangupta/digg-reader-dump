@@ -13,10 +13,8 @@ import com.sangupta.jerry.util.GsonUtils;
 @Command(name = "subs", description = "Dump user subscriptions")
 public class DumpSubscriptions extends DiggDumpCommand {
 	
-	
-
 	@Override
-	public void run() {
+	public void execute() {
 		String url = "http://digg.com/api/subscription/list.json";
 		WebRequest request = WebRequest.get(url);
 		massageUrlForAuthorization(request);
