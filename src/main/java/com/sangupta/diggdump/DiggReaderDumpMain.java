@@ -12,7 +12,8 @@ public class DiggReaderDumpMain {
 				.withDescription("Digg Reader Command line interface")
 				.withDefaultCommand(Help.class)
 				.withCommands(Help.class, DumpSavedArticles.class, DumpSubscriptions.class,
-								DumpPopularArticles.class, DumpDiggedArticles.class);
+								DumpPopularArticles.class, DumpDiggedArticles.class,
+								DumpAllArticles.class);
 
 		Cli<Runnable> parser = builder.build();
 
