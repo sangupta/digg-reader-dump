@@ -2,7 +2,7 @@ package com.sangupta.diggdump;
 
 import io.airlift.airline.Command;
 
-@Command(name = "popular", description = "Dump digged articles")
+@Command(name = "popular", description = "Dump popular articles")
 public class DumpPopularArticles extends DumpFeed {
 	
 	@Override
