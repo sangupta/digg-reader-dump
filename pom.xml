@@ -22,7 +22,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/sangupta/digg-reader-dump.git</connection>
 		<developerConnection>scm:git:http://git@github.com/sangupta/digg-reader-dump.git</developerConnection>
-		<url>https://github.com/sangupta/clitools</url>
+		<url>https://github.com/sangupta/digg-reader-dump</url>
 	</scm>
 	
 	<developers>
