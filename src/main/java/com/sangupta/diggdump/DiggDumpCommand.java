@@ -7,7 +7,7 @@ import com.sangupta.jerry.util.AssertUtils;
 
 public abstract class DiggDumpCommand implements Runnable {
 
-	@Option(name = { "--secret", "-s" }, description = "The secret to be used while accessing Digg Reader")
+	@Option(name = { "--cookies", "-c" }, description = "The cookies to be sent while accessing Digg Reader")
 	protected String authKey;
 	
 	protected void massageUrlForAuthorization(WebRequest request) {
