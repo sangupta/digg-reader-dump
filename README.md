@@ -4,9 +4,10 @@ Command-line tool to take dump of your Digg Reader account.
 
 # Why?
 
-I use a many different feed readers along-side for different purposes, and 
-I keep regularly taking a backup of my data. When I went to Digg Reader, it
-does not allow me to take a dump of all my data, except the OPML file.
+Digg Reader does not allow me to take a dump of all my data, except the OPML file. My saved
+articles, my diggs etc - neither it provides me a way to search in them. Thus I wrote this
+tool in my spare time to dump all of them for me, and probably allow me to search in them
+in future.
 
 Thus, I wrote this command-line tool to do the same for me.
 
