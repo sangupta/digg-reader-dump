@@ -21,18 +21,6 @@ $ mvn clean package
 
 # Usage
 
-You will need to extract the **cookie value** from your Digg Reader account using the Network
-requests tab of your favorite browser. Just copy and paste the entire cookie (response header)
-value as the last argument enclosed in single-quotes.
-
-```
-# To dump all saved articles
-$ java -jar digg-reader-dump.jar saved -e <the cookie value>
-
-# To export an OPML of all subscriptions
-# java -jar digg-reader-dump.jar subs -c <the cookie value>
-```
-
 The following commands are available:
 
 ```
@@ -49,6 +37,39 @@ The most commonly used digg commands are:
 See 'digg help <command>' for more information on a specific command.
 ```
 
+Examples:
+
+```
+# To dump all saved articles
+$ java -jar digg-reader-dump.jar saved -e <the cookie value>
+
+# To export an OPML of all subscriptions
+# java -jar digg-reader-dump.jar subs -c <the cookie value>
+```
+You will need to extract the **cookie value** from your Digg Reader account using the Network
+requests tab of your favorite browser. Just copy and paste the entire cookie (response header)
+value as the last argument enclosed in single-quotes.
+
+The tool creates the following 4 folders depending on the command that you
+selected as:
+
+* diggs
+* popular
+* saved
+* all
+
+A sample output from my own dump from Mar 20, 2018 is:
+
+```
+Saved article (98795e1a264c86e5bbbc1b416c3a664c44fba283.json): Introducing Google Browser Size
+Saved article (bbcd24f683c1bb10ad6492296f4bfbc3a75d3a58.json): Spring 3.0.0 is Now Available
+Saved article (44956eb7c9f7d7cc180fc41887583e71d5fbdf80.json): WordPress Creates a Twitter Compatible API
+Saved article (dddac5a0dc7017d5cd0c22b2b87d172cd6bb14b6.json): Search Engine Optimization (SEO) Toolkit
+Saved article (a87c5c827b64e3aa34d0c7f15a57ad67ca3939b0.json): Tech Thursday - cloud things, map things and ship things
+
+
+There are no more feed items in your subscriptions to export!
+```
 
 # License
 

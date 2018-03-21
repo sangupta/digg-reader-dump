@@ -12,7 +12,7 @@ public class DumpDiggedArticles extends DumpFeed {
 
 	@Override
 	protected String operation() {
-		return "digged";
+		return "diggs";
 	}
 
 }
