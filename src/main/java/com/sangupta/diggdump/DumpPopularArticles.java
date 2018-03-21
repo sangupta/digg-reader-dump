@@ -10,4 +10,9 @@ public class DumpPopularArticles extends DumpFeed {
 		return "http://digg.com/user/" + this.userID + "/items/popular.rss";
 	}
 
+	@Override
+	protected String operation() {
+		return "popular";
+	}
+
 }

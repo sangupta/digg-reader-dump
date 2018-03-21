@@ -6,6 +6,7 @@ import io.airlift.airline.Option;
 
 import com.sangupta.jerry.encoder.Base64Encoder;
 import com.sangupta.jerry.http.WebRequest;
+import com.sangupta.jerry.io.AdvancedStringReader;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 
@@ -38,12 +39,11 @@ public abstract class DiggDumpCommand implements Runnable {
 	}
 	
 	private void extractUser() {
-		String startKey = "frontend.user=\"";
-		int start = this.authKey.indexOf(startKey) + startKey.length();
-		int end = this.authKey.indexOf("|", start);
+		AdvancedStringReader reader = new AdvancedStringReader(this.authKey);
 		
 		// decode cookie value
-		String frontEndUser = this.authKey.substring(start, end);
+		reader.readTillNext("frontend.user=");
+		String frontEndUser = reader.readTillNext('|');
 		
 		// base64 decode
 		byte[] bytes = Base64Encoder.decode(frontEndUser);

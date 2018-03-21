@@ -1,16 +1,30 @@
 package com.sangupta.diggdump;
 
+import java.io.File;
+import java.io.IOException;
+
 import com.google.gson.FieldNamingPolicy;
-import com.sangupta.jerry.http.WebInvoker;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sangupta.jerry.http.WebRequest;
 import com.sangupta.jerry.http.WebResponse;
+import com.sangupta.jerry.http.service.HttpService;
+import com.sangupta.jerry.http.service.impl.DefaultHttpServiceImpl;
+import com.sangupta.jerry.util.AssertUtils;
+import com.sangupta.jerry.util.FileUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.UriUtils;
 
 public abstract class DumpFeed extends DiggDumpCommand {
 	
 	protected abstract String getFeedUrl();
+	
+	protected abstract String operation();
+	
+	private final HttpService httpService = new DefaultHttpServiceImpl();
 
+	private final static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+	
 	@Override
 	public void execute() {
 		String nextPosition = null;
@@ -23,7 +37,7 @@ public abstract class DumpFeed extends DiggDumpCommand {
 			
 			WebRequest request = WebRequest.get(url);
 			massageUrlForAuthorization(request);
-			WebResponse response = WebInvoker.executeSilently(request);
+			WebResponse response = this.httpService.executeSilently(request);
 			if(response == null) {
 				System.out.println("Unable to hit the internet to fetch subscriptions.");
 				return;
@@ -42,14 +56,31 @@ public abstract class DumpFeed extends DiggDumpCommand {
 				return;
 			}
 			
-			if(result.data == null || result.data.feed == null || result.data.feed.length == 0) {
-				System.out.println("There are no feeds in your subscriptions.");
+			if(result.data == null || result.data.feed == null || AssertUtils.isEmpty(result.data.nextPosition)) {
+				System.out.println("\n\nThere are no more feed items in your subscriptions to export!");
+				System.out.println("\n\n" + "Server response was: \n" + json);
 				return;
 			}
 			
 			// start iterating and show the data on screen
+			File parent = FileUtils.resolveToFile("./" + this.operation());
+			try {
+				org.apache.commons.io.FileUtils.forceMkdir(parent);
+			} catch (IOException e1) {
+				System.out.println("Unable to create folder to save all dump data... exiting!");
+				return;
+			}
+			
 			for(Feed feed : result.data.feed) {
-				System.out.println(feed.publishDate + ": " + feed.content.title);
+				String filename = feed.content.contentId + ".json";
+				try {
+					org.apache.commons.io.FileUtils.write(new File(parent, filename), GSON.toJson(feed));
+				} catch (IOException e) {
+					System.out.println("Unable to save contents for article: " + feed.content.feedUrl);
+					return;
+				}
+				
+				System.out.println("Saved article (" + filename + "): " + feed.content.title);
 			}
 			
 			nextPosition = result.data.nextPosition;

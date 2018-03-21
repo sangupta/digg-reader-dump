@@ -39,3 +39,8 @@ target/*
 .settings/*
 /target
 /target/
+dependency-reduced-pom.xml
+saved/*
+all/*
+digg/*
+popular/*

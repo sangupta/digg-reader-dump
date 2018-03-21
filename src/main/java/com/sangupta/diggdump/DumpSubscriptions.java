@@ -1,24 +1,27 @@
 package com.sangupta.diggdump;
 
-import io.airlift.airline.Command;
-
 import java.util.Map;
 
 import com.google.gson.FieldNamingPolicy;
-import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebRequest;
 import com.sangupta.jerry.http.WebResponse;
+import com.sangupta.jerry.http.service.HttpService;
+import com.sangupta.jerry.http.service.impl.DefaultHttpServiceImpl;
 import com.sangupta.jerry.util.GsonUtils;
+
+import io.airlift.airline.Command;
 
 @Command(name = "subs", description = "Dump user subscriptions")
 public class DumpSubscriptions extends DiggDumpCommand {
+	
+	private final HttpService httpService = new DefaultHttpServiceImpl();
 	
 	@Override
 	public void execute() {
 		String url = "http://digg.com/api/subscription/list.json";
 		WebRequest request = WebRequest.get(url);
 		massageUrlForAuthorization(request);
-		WebResponse response = WebInvoker.executeSilently(request);
+		WebResponse response = this.httpService.executeSilently(request);
 		if(response == null) {
 			System.out.println("Unable to hit the internet to fetch subscriptions.");
 			return;

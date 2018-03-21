@@ -10,4 +10,9 @@ public class DumpDiggedArticles extends DumpFeed {
 		return "http://digg.com/user/" + this.userID + "/diggs.rss";
 	}
 
+	@Override
+	protected String operation() {
+		return "digged";
+	}
+
 }

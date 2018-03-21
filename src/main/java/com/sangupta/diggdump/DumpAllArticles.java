@@ -10,4 +10,9 @@ public class DumpAllArticles extends DumpFeed {
 		return "http://digg.com/user/" + this.userID + "/items/all.rss";
 	}
 
+	@Override
+	protected String operation() {
+		return "all";
+	}
+
 }
