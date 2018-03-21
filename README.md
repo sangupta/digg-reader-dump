@@ -51,7 +51,16 @@ $ java -jar digg-reader-dump-1.0.0.jar saved -c <the cookie value>
 ```
 You will need to extract the **cookie value** from your Digg Reader account using the Network
 requests tab of your favorite browser. Just copy and paste the entire cookie (response header)
-value as the last argument enclosed in single-quotes.
+value as the last argument enclosed in single-quotes. Refer to following browser specific help
+articles to see how to capture cookie value:
+
+* Chrome: https://developers.google.com/web/tools/chrome-devtools/network-performance/reference
+* Firefox: https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor
+* Safari: https://developer.apple.com/safari/tools/
+* Edge: https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide/network
+* Internet Explorer: https://msdn.microsoft.com/en-us/library/gg130952(v=vs.85).aspx
+* Opera: https://www.opera.com/dragonfly/documentation/network/
+* Samsung Internet Explorer: http://developer.samsung.com/tv/develop/getting-started/using-sdk/web-inspector
 
 The tool creates the following 4 folders depending on the command that you
 selected as:
