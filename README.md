@@ -44,10 +44,10 @@ Examples:
 
 ```
 # To dump all saved articles
-$ java -jar digg-reader-dump.jar saved -e <the cookie value>
+$ java -jar digg-reader-dump-1.0.0.jar saved -c <the cookie value>
 
 # To export an OPML of all subscriptions
-# java -jar digg-reader-dump.jar subs -c <the cookie value>
+# java -jar digg-reader-dump-1.0.0.jar subs -c <the cookie value>
 ```
 You will need to extract the **cookie value** from your Digg Reader account using the Network
 requests tab of your favorite browser. Just copy and paste the entire cookie (response header)
