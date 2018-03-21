@@ -11,6 +11,9 @@ in future. Thus, I wrote this command-line tool in 2015 to do the same for me.
 
 **Digg Reader is being shut down on March 26, 2018**. Save all your data.
 
+Download 1.0.0 release: https://github.com/sangupta/digg-reader-dump/releases/tag/1.0.0
+
+
 # Hacking
 
 Use Oracle JDK and Apache Maven to build the project:
