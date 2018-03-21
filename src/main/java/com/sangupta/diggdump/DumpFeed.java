@@ -56,9 +56,9 @@ public abstract class DumpFeed extends DiggDumpCommand {
 				return;
 			}
 			
-			if(result.data == null || result.data.feed == null || AssertUtils.isEmpty(result.data.nextPosition)) {
+			if(result.data == null || result.data.feed == null || AssertUtils.isEmpty(result.data.nextPosition) || "-1".equals(result.data.nextPosition)) {
 				System.out.println("\n\nThere are no more feed items in your subscriptions to export!");
-				System.out.println("\n\n" + "Server response was: \n" + json);
+//				System.out.println("\n\n" + "Server response was: \n" + json + "\n\n");
 				return;
 			}
 			
